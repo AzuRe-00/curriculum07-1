@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>Blog</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-    </head>
-    <body class="antialiased">
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('index') }}
+        </h2>
+    </x-slot>
        <h1>Blog name</h1>
        <a href="/posts/create">create</a>
        <div class='posts'>
@@ -24,6 +19,7 @@
                    </form>
                </div>
            @endforeach
+           <div>ログインユーザー：{{ Auth::user()->name }}</div>
        </div>
        <div class='paginate'>{{ $posts->links()}}</div>
        <script>
@@ -35,5 +31,4 @@
                }
            }
        </script>
-    </body>
-</html>
+</x-app-layout>
